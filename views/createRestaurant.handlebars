@@ -4,47 +4,46 @@
     <table class="table table-borderless">
         <thead>
 
-            <form action="/restaurants/{{ restaurant._id }}/edit" method="POST">
+            <form action="/create" method="POST">
                 <tr>
                     <th><a href="/"> back</a>
                 </tr>
                 <tr>
                     <th> <a>中文店名</a>
-                    <th> <input type="text" placeholder="請輸入中文店名" name="name" value="{{ restaurant.name }}">
+                    <th> <input type="text" placeholder="請輸入中文店名(必填)" name="name">
                 </tr>
                 <tr>
                     <th><a>英文店名</a>
-                    <th><input type="text" placeholder="請輸入英文店名" name="name_en" value="{{ restaurant.name_en }}">
+                    <th><input type="text" placeholder="請輸入英文店名" name="name_en">
                 </tr>
                 <tr>
                     <th><a>類別</a>
-                    <th><input type="text" placeholder="請輸入餐廳類別" name="category" value="{{ restaurant.category }}">
+                    <th><input type="text" placeholder="請輸入餐廳類別" name="category">
                 </tr>
                 <tr>
                     <th><a>照片</a>
-                    <th><input type="text" placeholder="image" name="image" value="{{ restaurant.image }}">
+                    <th><input type="text" placeholder="請輸入圖片網址" name="image">
                 </tr>
                 <tr>
                     <th><a>地址</a>
-                    <th><input type="text" placeholder="location" name="location" value="{{ restaurant.location }}">
+                    <th><input type="text" placeholder="請輸入圖片網址地址" name="location">
                 </tr>
                 <tr>
                     <th><a>電話</a>
-                    <th><input type="text" placeholder="phone" name="phone" value="{{ restaurant.phone }}">
+                    <th><input type="text" placeholder="請輸入電話" name="phone">
                 </tr>
                 <tr>
                     <th><a>google Map</a>
-                    <th><input type="text" placeholder="google_map" name="google_map"
+                    <th><input type="text" placeholder="請輸入google_map網址" name="google_map"
                             value="{{ restaurant.google_map }}">
                 </tr>
                 <tr>
                     <th><a>評分</a>
-                    <th><input type="text" placeholder="rating" name="rating" value="{{ restaurant.rating }}">
+                    <th><input type="text" placeholder="rating" name="rating">
                 </tr>
                 <tr>
                     <th><a>描述</a>
-                    <th><input type="text" placeholder="description" name="description"
-                            value="{{ restaurant.description }}">
+                    <th><input type="text" placeholder="描述店家" name="description">
                 </tr>
                 <tr>
                     <th>

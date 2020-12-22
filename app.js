@@ -45,8 +45,6 @@ app.get('/', (req, res) => {
         .then(restaurants => res.render('index', { restaurants })) // 將資料傳給 index 樣板
         .catch(error => console.error(error)) // 錯誤處理
     //////////
-    // res.render('index', { restaurants: restaurantList.results })
-    // console.log(restaurantList)
 })
 
 
@@ -60,9 +58,6 @@ app.get('/restaurants/:resturant_id', (req, res) => {
         .lean()
         .then((restaurant) => res.render('show', { restaurant }))
         .catch(error => console.log(error))
-
-    // const restaurant = restaurantList.results.find(restaurant => restaurant.id.toString() === req.params.resturant_id)
-    // res.render('show', { restaurant: restaurant })
 })
 
 //search
@@ -76,6 +71,20 @@ app.get('/search', (req, res) => {
         .catch(error => console.log(error))
 
 })
+//create
+app.get('/create', (req, res) => {
+
+
+    res.render('createRestaurant')
+})
+
+app.post('/create', (req, res) => {
+    const restaurant = req.body
+    return restaurantList.create(restaurant)
+        .then(() => res.redirect('/'))
+
+
+})
 
 
 //edit
@@ -86,8 +95,6 @@ app.get('/restaurants/:resturant_id/edit', (req, res) => {
         .then((restaurant) => res.render('edit', { restaurant }))
         .catch(error => console.log(error))
 
-    // const restaurant = restaurantList.results.find(restaurant => restaurant.id.toString() === req.params.resturant_id)
-    // res.render('show', { restaurant: restaurant })
 })
 
 app.post('/restaurants/:resturant_id/edit', (req, res) => {
@@ -95,6 +102,7 @@ app.post('/restaurants/:resturant_id/edit', (req, res) => {
     const elements = req.body
     return restaurantList.findById(id)
         .then((restaurant) => {
+            // console.log(elements)
             // res.render('edit', { restaurant })
             for (const element in elements) {//找不到從物件取出每個值的方法，先用這種方式代替
                 restaurant[element] = elements[element]
