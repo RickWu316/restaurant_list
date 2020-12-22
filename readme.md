@@ -44,13 +44,22 @@ cd phrase_creater
 提醒: 若先前在本地開發環境中以npm install -g nodemon 指令安裝過可跳至下步驟
 ```
 
-5. 啟動伺服器，執行 app.js 檔案
+5. 在本地mongoose服務中 新增名為restaurant的database
+
+
+
+6. 載入 seeder
+```
+在 Terminal 輸入 npm run seed 指令
+```
+
+7. 啟動伺服器，執行 app.js 檔案
 
 ```
 nodemon app.js
 ```
 
-6. 當 terminal 出現以下字樣，表示伺服器與資料庫已啟動並成功連結
+8. 當 terminal 出現以下字樣，表示伺服器與資料庫已啟動並成功連結
 
 ```
 The Express server is running on http://localhost:3000
