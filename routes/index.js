@@ -10,6 +10,7 @@ const search = require('./modules/search')
 // 將網址結構符合 / 字串的 request 導向 home 模組 
 router.use('/', home)
 router.use('/restaurants', show)
+router.use('/create', create)
 router.use('/search', search)
 
 
