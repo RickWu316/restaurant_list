@@ -28,20 +28,21 @@ git clone https://github.com/RickWu316/rstaurant_list.git
 
 2. 開啟終端機(Terminal)，進入存放此專案的資料夾
 
-```
+```shell
 cd phrase_creater
 ```
 
 3. 安裝 npm 套件
 
-```
-在 Terminal 輸入 npm install 指令
+```shell
+npm install
 ```
 
 4. 安裝 nodemon 套件
 
-```
-提醒: 若先前在本地開發環境中以npm install -g nodemon 指令安裝過可跳至下步驟
+```shell
+npm install -g nodemon 
+# 若先前在本地開發環境中指令安裝過可跳至下步驟
 ```
 
 5. 在本地mongoose服務中 新增名為restaurant的database
@@ -49,13 +50,13 @@ cd phrase_creater
 
 
 6. 載入 seeder
-```
-在 Terminal 輸入 npm run seed 指令
+```shell
+ npm run seed
 ```
 
 7. 啟動伺服器，執行 app.js 檔案
 
-```
+```shell
 nodemon app.js
 ```
 

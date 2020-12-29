@@ -28,7 +28,7 @@ router.get('/', (req, res) => {
 //search
 router.get('/search', (req, res) => {
     const keyword = req.query.keyword
-    // const keyword = "Sababa"
+
 
     console.log(req.query)
     return restaurantList.find({ 'name': { '$regex': keyword, '$options': 'i' } })

@@ -5,7 +5,6 @@ const app = express()
 const port = 3000
 const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser') // 引用 body-parser
-const restaurantList = require('./models/restaurant')
 const mongoose = require('mongoose') // 載入 mongoose
 const methodOverride = require('method-override')// 載入 method-override
 
@@ -29,7 +28,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 // setting static files
 app.use(express.static('public'))
-app.use('/sylesheets/css', express.static('css'));
+
 
 // 將 request 導入路由器
 app.use(routes)

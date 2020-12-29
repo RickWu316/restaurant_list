@@ -3,16 +3,16 @@ const router = express.Router()
 // 引用 Todo model
 const restaurantList = require('../../models/restaurant')
 // 定義首頁路由
-router.get('/:resturant_id', (req, res) => {
-    const id = req.params.resturant_id
+router.get('/:restaurant_id', (req, res) => {
+    const id = req.params.restaurant_id
     return restaurantList.findById(id)
         .lean()
         .then((restaurant) => res.render('show', { restaurant }))
         .catch(error => console.log(error))
 })
 
-router.get('/:resturant_id/edit', (req, res) => {
-    const id = req.params.resturant_id
+router.get('/:restaurant_id/edit', (req, res) => {
+    const id = req.params.restaurant_id
     return restaurantList.findById(id)
         .lean()
         .then((restaurant) => res.render('edit', { restaurant }))
@@ -20,8 +20,8 @@ router.get('/:resturant_id/edit', (req, res) => {
 
 })
 
-router.put('/:resturant_id', (req, res) => {
-    const id = req.params.resturant_id
+router.put('/:restaurant_id', (req, res) => {
+    const id = req.params.restaurant_id
     const elements = req.body
     return restaurantList.findById(id)
         .then((restaurant) => {
@@ -37,8 +37,8 @@ router.put('/:resturant_id', (req, res) => {
         .catch(error => console.log(error))
 })
 
-router.delete('/:resturant_id', (req, res) => {
-    const id = req.params.resturant_id
+router.delete('/:restaurant_id', (req, res) => {
+    const id = req.params.restaurant_id
     return restaurantList.findById(id)
         .then(restaurant => restaurant.remove())
         // .then(restaurant => console.log(restaurant))
