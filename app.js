@@ -5,7 +5,6 @@ const app = express()
 const port = 3000
 const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser') // 引用 body-parser
-const mongoose = require('mongoose') // 載入 mongoose
 const methodOverride = require('method-override')// 載入 method-override
 
 // 引用路由器

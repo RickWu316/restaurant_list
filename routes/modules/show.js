@@ -33,7 +33,7 @@ router.put('/:restaurant_id', (req, res) => {
 
             return restaurant.save()
         })
-        .then(() => res.redirect(`/restaurants/${id}/edit`))
+        .then(() => res.redirect('/'))
         .catch(error => console.log(error))
 })
 
