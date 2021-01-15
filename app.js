@@ -6,6 +6,8 @@ const port = 3000
 const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser') // 引用 body-parser
 const methodOverride = require('method-override')// 載入 method-override
+const session = require('express-session')
+const usePassport = require('./config/passport')
 
 // 引用路由器
 const routes = require('./routes')
@@ -28,11 +30,16 @@ app.use(bodyParser.urlencoded({ extended: true }))
 // setting static files
 app.use(express.static('public'))
 
+app.use(session({
+    secret: 'ThisIsMySecret',
+    resave: false,
+    saveUninitialized: true
+}))
+
+usePassport(app)
 
 // 將 request 導入路由器
 app.use(routes)
-
-
 
 
 
