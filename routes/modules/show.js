@@ -21,6 +21,7 @@ router.get('/:restaurant_id/edit', (req, res) => {
 })
 
 router.put('/:restaurant_id', (req, res) => {
+    const userAuthority = req.user.authority
     const id = req.params.restaurant_id
     const elements = req.body
     return restaurantList.findById(id)
@@ -31,17 +32,30 @@ router.put('/:restaurant_id', (req, res) => {
                 restaurant[element] = elements[element]
             }
 
-            return restaurant.save()
+            if (!userAuthority.indexOf(restaurant.id)) {  //找到會回傳-1
+                return restaurant.save()
+            } else {
+                req.flash('warning_msg', '你沒有修改的權限！')
+                res.redirect(`${id}/edit`)
+            }
+
         })
-        .then(() => res.redirect('/'))
+        // .then(() => res.redirect('/'))
         .catch(error => console.log(error))
 })
 
 router.delete('/:restaurant_id', (req, res) => {
+    const userAuthority = req.user.authority
     const id = req.params.restaurant_id
     return restaurantList.findById(id)
-        .then(restaurant => restaurant.remove())
-        // .then(restaurant => console.log(restaurant))
+        .then((restaurant) => {
+            if (!userAuthority.indexOf(restaurant.id)) {  //找到會回傳-1
+                return restaurant.remove()
+            } else {
+                req.flash('warning_msg', '你沒有刪除的權限！')
+                // res.redirect(`/`)
+            }
+        })
         .then(() => res.redirect('/'))
         .catch(error => console.log(error))
 })

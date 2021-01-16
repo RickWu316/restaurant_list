@@ -1,8 +1,74 @@
+const bcrypt = require('bcryptjs')
+// if (process.env.NODE_ENV !== 'production') {
+//     require('dotenv').config()
+// }
 const db = require('../../config/mongoose')
-
-
 const restaurant = require('../restaurant') // 載入 todo model
+const User = require('../user')
+const SEED_USER = [
+    {
+        name: 'user-1',
+        email: 'user1@example.com',
+        password: '12345678',
 
+        authority: [1, 2, 3]
+    },
+    {
+        name: 'user-2',
+        email: 'user2@example.com',
+        password: '12345678',
+        authority: ['4', '5', '6']
+    },
+]
+
+
+// console.log(bcrypt.genSalt(10))
+
+// async function test() {
+//     for (i = 0; i < 2; i++) {
+//         const bcryptsalt = await bcrypt.genSalt(10)
+//         // console.log(bcryptsalt)
+//         bcryptsalt
+//             .then(salt => bcrypt.hash(SEED_USER[i].password, salt))
+//             .then(hash => console.log(hash))
+//             .then(() => {
+//                 console.log('done.')
+//                 process.exit()
+//             })
+//     }
+// }
+
+//晚點再回來解決async的問題
+db.once('open', () => {
+
+    bcrypt
+        .genSalt(10)
+        .then(salt => bcrypt.hash(SEED_USER[0].password, salt))
+        .then(hash => User.create({
+            name: SEED_USER[0].name,
+            email: SEED_USER[0].email,
+            authority: SEED_USER[0].authority,
+            password: hash
+        },
+            {
+                name: SEED_USER[1].name,
+                email: SEED_USER[1].email,
+                authority: SEED_USER[1].authority,
+                password: hash
+            }))
+        // .then(user => {
+        //     const userId = user._id
+        //     // return Promise.all(Array.from(
+        //     //     { length: 10 },
+        //     //     (_, i) => Todo.create({ name: `name-${i}`, userId })
+        //     // ))
+        // })
+        .then(() => {
+            console.log('done.')
+            process.exit()
+        })
+
+})
 
 db.once('open', () => {
     console.log('mongodb connected!')

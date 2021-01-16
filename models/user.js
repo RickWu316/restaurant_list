@@ -17,7 +17,7 @@ const userSchema = new Schema({
         default: Date.now
     },
     authority: {
-        type: String,
+        type: Array,
     }
 })
 module.exports = mongoose.model('User', userSchema)
