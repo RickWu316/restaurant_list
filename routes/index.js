@@ -13,10 +13,10 @@ const { authenticator } = require('../middleware/auth')  // 掛載 middleware
 
 
 // 將網址結構符合 / 字串的 request 導向 home 模組 
-// router.use('/create', authenticator, create)
-// router.use('/search', authenticator, search)
-router.use('/users', users)
+router.use('/create', authenticator, create)
+router.use('/search', authenticator, search)
 router.use('/restaurants', authenticator, show) // 加入驗證程序
+router.use('/users', users)
 router.use('/', authenticator, home) // 加入驗證程序
 
 // 匯出路由模組

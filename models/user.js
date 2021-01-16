@@ -15,6 +15,9 @@ const userSchema = new Schema({
     createdAt: {
         type: Date,
         default: Date.now
+    },
+    authority: {
+        type: String,
     }
 })
 module.exports = mongoose.model('User', userSchema)
