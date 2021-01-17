@@ -15,10 +15,12 @@ router.post('/', (req, res) => {  //把物件ID跟User關聯
     const restaurant = req.body
     User.findById(userId)
         .then((user) => {
-            user.authority.push(userId)
-            user.save()
+            restaurantList.create(restaurant)
+                .then(restaurant => {
+                    user.authority.push(restaurant._id.toString())
+                    user.save()
+                })
         })
-        .then(() => restaurantList.create(restaurant))
         .then(() => res.redirect('/'))
 })
 // 匯出路由模組
