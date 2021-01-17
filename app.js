@@ -8,11 +8,12 @@ const bodyParser = require('body-parser') // 引用 body-parser
 const methodOverride = require('method-override')// 載入 method-override
 const session = require('express-session')
 const usePassport = require('./config/passport')
-const flash = require('connect-flash')   // 引用套件
-
-// 引用路由器
+const flash = require('connect-flash')
 const routes = require('./routes')
 
+if (process.env.NODE_ENV !== 'production') {
+    require('dotenv').config()
+}
 
 
 require('./config/mongoose')
@@ -32,7 +33,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.static('public'))
 
 app.use(session({
-    secret: 'ThisIsMySecret',
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true
 }))
@@ -55,6 +56,6 @@ app.use(routes)
 
 
 // start and listen on the Express server
-app.listen(port, () => {
-    console.log(`Express is listening on localhost:${port}`)
+app.listen(process.env.PORT, () => {
+    console.log(`Express is listening on localhost:${process.env.PORT}`)
 })

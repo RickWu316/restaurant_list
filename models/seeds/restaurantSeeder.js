@@ -1,7 +1,7 @@
 const bcrypt = require('bcryptjs')
-// if (process.env.NODE_ENV !== 'production') {
-//     require('dotenv').config()
-// }
+if (process.env.NODE_ENV !== 'production') {
+    require('dotenv').config()
+}
 const db = require('../../config/mongoose')
 const restaurant = require('../restaurant') // 載入 todo model
 const User = require('../user')
@@ -37,37 +37,69 @@ const SEED_USER = [
 //             })
 //     }
 // }
+// Promise.all(createBcrypt(2))
+
+// async function createBcrypt(test) {
+//     for (i = 0; i < test; i++) {
+//         await bcrypt
+//             .genSalt(10)
+//             .then(salt => bcrypt.hash(SEED_USER[i].password, salt))
+//             .then(hash => console.log(hash))
+//             .then(() => {
+//                 console.log('done.')
+//                 process.exit()
+//             })
+//     }
+// }
+
+// SEED_USER.forEach(user => {
+//     bcrypt
+//         .genSalt(10)
+//         .then(salt => bcrypt.hash(user.password, salt))
+//         .then(hash => User.create({
+//             name: user.name,
+//             email: user.email,
+//             password: hash
+//         }))
+// })
+
+// Promise.all(Array.from(
+//     { length: 2 },
+//     (_, i) => User.create({
+//             name: SEED_USER[i].name,
+//             email: SEED_USER[i].email,
+//             authority: SEED_USER[i].authority,
+//             password: hash
+//         })
+// )
+
 
 //晚點再回來解決async的問題
 db.once('open', () => {
 
-    bcrypt
-        .genSalt(10)
-        .then(salt => bcrypt.hash(SEED_USER[0].password, salt))
-        .then(hash => User.create({
-            name: SEED_USER[0].name,
-            email: SEED_USER[0].email,
-            authority: SEED_USER[0].authority,
-            password: hash
-        },
-            {
-                name: SEED_USER[1].name,
-                email: SEED_USER[1].email,
-                authority: SEED_USER[1].authority,
-                password: hash
+    SEED_USER.forEach(user => {
+        bcrypt
+            .genSalt(10)
+            .then(salt => bcrypt.hash(user.password, salt))
+            .then(hash => User.create({
+                name: user.name,
+                email: user.email,
+                password: hash,
+                authority: user.authority
             }))
-        // .then(user => {
-        //     const userId = user._id
-        //     // return Promise.all(Array.from(
-        //     //     { length: 10 },
-        //     //     (_, i) => Todo.create({ name: `name-${i}`, userId })
-        //     // ))
-        // })
-        .then(() => {
-            console.log('done.')
-            process.exit()
-        })
+            // .then(user => {
+            //     const userId = user._id
+            //     // return Promise.all(Array.from(
+            //     //     { length: 10 },
+            //     //     (_, i) => Todo.create({ name: `name-${i}`, userId })
+            //     // ))
+            // })
+            .then(() => {
+                console.log('done.')
+                process.exit()
+            })
 
+    })
 })
 
 db.once('open', () => {
@@ -168,7 +200,7 @@ db.once('open', () => {
             "google_map": "https://goo.gl/maps/V9mKwVJ4s5v",
             "rating": 4.7,
             "description": "我們希望帶給您的，不只是啤酒，有美食，還有一份對生活的熱情。 義大利語「Bravo」的原意─「喝采」、「讚揚」， 我想著如果有一個大家都能輕鬆品嚐美酒、享受美食的地方，那就真的是太棒了！ 因為這個念頭，加上一股對比利時啤酒的熱情， 於是「Bravo Beer布娜飛比利時啤酒餐廳」在2006年誕生了..."
-        }
+        },
     )
 
     console.log('done')
