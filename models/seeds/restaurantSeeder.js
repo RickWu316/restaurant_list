@@ -22,58 +22,6 @@ const SEED_USER = [
 ]
 
 
-// console.log(bcrypt.genSalt(10))
-
-// async function test() {
-//     for (i = 0; i < 2; i++) {
-//         const bcryptsalt = await bcrypt.genSalt(10)
-//         // console.log(bcryptsalt)
-//         bcryptsalt
-//             .then(salt => bcrypt.hash(SEED_USER[i].password, salt))
-//             .then(hash => console.log(hash))
-//             .then(() => {
-//                 console.log('done.')
-//                 process.exit()
-//             })
-//     }
-// }
-// Promise.all(createBcrypt(2))
-
-// async function createBcrypt(test) {
-//     for (i = 0; i < test; i++) {
-//         await bcrypt
-//             .genSalt(10)
-//             .then(salt => bcrypt.hash(SEED_USER[i].password, salt))
-//             .then(hash => console.log(hash))
-//             .then(() => {
-//                 console.log('done.')
-//                 process.exit()
-//             })
-//     }
-// }
-
-// SEED_USER.forEach(user => {
-//     bcrypt
-//         .genSalt(10)
-//         .then(salt => bcrypt.hash(user.password, salt))
-//         .then(hash => User.create({
-//             name: user.name,
-//             email: user.email,
-//             password: hash
-//         }))
-// })
-
-// Promise.all(Array.from(
-//     { length: 2 },
-//     (_, i) => User.create({
-//             name: SEED_USER[i].name,
-//             email: SEED_USER[i].email,
-//             authority: SEED_USER[i].authority,
-//             password: hash
-//         })
-// )
-
-
 //晚點再回來解決async的問題
 db.once('open', () => {
 
@@ -87,13 +35,6 @@ db.once('open', () => {
                 password: hash,
                 authority: user.authority
             }))
-            // .then(user => {
-            //     const userId = user._id
-            //     // return Promise.all(Array.from(
-            //     //     { length: 10 },
-            //     //     (_, i) => Todo.create({ name: `name-${i}`, userId })
-            //     // ))
-            // })
             .then(() => {
                 console.log('done.')
                 process.exit()
