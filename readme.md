@@ -4,6 +4,12 @@
 
 ## 功能列表
 
+2020/01/17 新增
+* 使用者登入功能
+* 使用者註冊功能
+* 只有指定權限的使用者才能刪除/編輯特定餐廳資料(目前預設創立者才能編輯)
+
+--------------
 * 使用者可以新增一家餐廳
 * 使用者可以瀏覽一家餐廳的詳細資訊
 * 使用者可以瀏覽全部所有餐廳
@@ -16,6 +22,11 @@
 * Express-handlebars v5.2.0
 * body-parser: 1.19.0
 * mongoose: 5.11.8
+* bcryptjs: 2.4.3
+* dotenv: 8.2.0
+* passport: 0.4.1
+* connect-flash :0.1.1
+
  
 
 ## 專案安裝流程
@@ -68,3 +79,9 @@ The Express server is running on http://localhost:3000
 ```
 
 現在，你可開啟任一瀏覽器瀏覽器輸入 [http://localhost:3000](http://localhost:3000) 開始進入網頁
+
+預設帳號資料
+
+user1@example.com /12345678
+
+user2@example.com /12345678
