@@ -1,123 +1,68 @@
 <h1 class="mb-1 restaurant-show-title">{{restaurant.name}}</h1>
 <div class="container">
 
-
-    {{!-- <thead> --}}
-
-        {{!-- <form action="/create" method="POST">
-            <tr>
-                <th><a href="/"> back</a>
-            </tr>
-            <tr>
-                <th> <a>中文店名</a>
-                <th> <input type="text" placeholder="請輸入中文店名(必填)" name="name">
-            </tr>
-            <tr>
-                <th><a>英文店名</a>
-                <th><input type="text" placeholder="請輸入英文店名" name="name_en">
-            </tr>
-            <tr>
-                <th><a>類別</a>
-                <th><input type="text" placeholder="請輸入餐廳類別" name="category">
-            </tr>
-            <tr>
-                <th><a>照片</a>
-                <th><input type="text" placeholder="請輸入圖片網址" name="image">
-            </tr>
-            <tr>
-                <th><a>地址</a>
-                <th><input type="text" placeholder="請輸入圖片網址地址" name="location">
-            </tr>
-            <tr>
-                <th><a>電話</a>
-                <th><input type="text" placeholder="請輸入電話" name="phone">
-            </tr>
-            <tr>
-                <th><a>google Map</a>
-                <th><input type="text" placeholder="請輸入google_map網址" name="google_map"
-                        value="{{ restaurant.google_map }}">
-            </tr>
-            <tr>
-                <th><a>評分</a>
-                <th><input type="text" placeholder="rating" name="rating">
-            </tr>
-            <tr>
-                <th><a>描述</a>
-                <th><input type="text" placeholder="描述店家" name="description">
-            </tr>
-            <tr>
-                <th>
-                <th>
-                <th><button type="submit">Save</button>
-            </tr>
-
-
-        </form> --}}
-
-
-        <form action="/create" method="POST">
-            <div class="row mt-5 justify-content-center">
-                <div class="col-4 text-secondary">中文店名</div>
-                <div class="col-8 ">
-                    <input type="text" placeholder="請輸入中文店名(必填)" name="name">
-                </div>
+    <form action="/new" method="POST">
+        <div class="row mt-5 justify-content-center">
+            <div class="col-4 text-secondary">中文店名</div>
+            <div class="col-8 ">
+                <input type="text" placeholder="請輸入中文店名(必填)" name="name">
             </div>
-            <div class="row mt-2 justify-content-center">
-                <div class="col-4 text-secondary">英文店名</div>
-                <div class="col-8 ">
-                    <input type="text" placeholder="請輸入英文店名" name="name_en">
-                </div>
+        </div>
+        <div class="row mt-2 justify-content-center">
+            <div class="col-4 text-secondary">英文店名</div>
+            <div class="col-8 ">
+                <input type="text" placeholder="請輸入英文店名" name="name_en">
             </div>
-            <div class="row mt-2 justify-content-center">
-                <div class="col-4 text-secondary">類別</div>
-                <div class="col-8 ">
-                    <input type="text" placeholder="請輸入餐廳類別" name="category">
-                </div>
+        </div>
+        <div class="row mt-2 justify-content-center">
+            <div class="col-4 text-secondary">類別</div>
+            <div class="col-8 ">
+                <input type="text" placeholder="請輸入餐廳類別" name="category">
             </div>
-            <div class="row mt-2 justify-content-center">
-                <div class="col-4 text-secondary">照片</div>
-                <div class="col-8 ">
-                    <input type="text" placeholder="請輸入圖片網址" name="image">
-                </div>
+        </div>
+        <div class="row mt-2 justify-content-center">
+            <div class="col-4 text-secondary">照片</div>
+            <div class="col-8 ">
+                <input type="text" placeholder="請輸入圖片網址" name="image">
             </div>
-            <div class="row mt-2 justify-content-center">
-                <div class="col-4 text-secondary">地址</div>
-                <div class="col-8 ">
-                    <input type="text" placeholder="請輸入地址" name="location">
-                </div>
+        </div>
+        <div class="row mt-2 justify-content-center">
+            <div class="col-4 text-secondary">地址</div>
+            <div class="col-8 ">
+                <input type="text" placeholder="請輸入地址" name="location">
             </div>
+        </div>
 
-            <div class="row mt-2 justify-content-center">
-                <div class="col-4 text-secondary">電話</div>
-                <div class="col-8 ">
-                    <input type="text" placeholder="請輸入電話" name="phone">
-                </div>
+        <div class="row mt-2 justify-content-center">
+            <div class="col-4 text-secondary">電話</div>
+            <div class="col-8 ">
+                <input type="text" placeholder="請輸入電話" name="phone">
             </div>
+        </div>
 
-            <div class="row mt-2 justify-content-center">
-                <div class="col-4 text-secondary">google Map</div>
-                <div class="col-8 ">
-                    <input type="text" placeholder="請輸入google_map網址" name="google_map"
-                        value="{{ restaurant.google_map }}">
-                </div>
+        <div class="row mt-2 justify-content-center">
+            <div class="col-4 text-secondary">google Map</div>
+            <div class="col-8 ">
+                <input type="text" placeholder="請輸入google_map網址" name="google_map" value="{{ restaurant.google_map }}">
             </div>
-            <div class="row mt-2 justify-content-center">
-                <div class="col-4 text-secondary">評分</div>
-                <div class="col-8 ">
-                    <input type="text" placeholder="rating" name="rating">
-                </div>
+        </div>
+        <div class="row mt-2 justify-content-center">
+            <div class="col-4 text-secondary">評分</div>
+            <div class="col-8 ">
+                <input type="text" placeholder="rating" name="rating">
             </div>
-            <div class="row mt-2 justify-content-center">
-                <div class="col-4 text-secondary">描述</div>
-                <div class="col-8 ">
-                    <input type="text" placeholder="描述店家" name="description">
-                </div>
+        </div>
+        <div class="row mt-2 justify-content-center">
+            <div class="col-4 text-secondary">描述</div>
+            <div class="col-8 ">
+                <input type="text" placeholder="描述店家" name="description">
             </div>
+        </div>
 
-            <div class="row mt-5 justify-content-center">
-                <button type="submit" class="btn btn-info">Save</button>
-            </div>
+        <div class="row mt-5 justify-content-center">
+            <button type="submit" class="btn btn-info">Save</button>
+        </div>
 
-        </form>
+    </form>
 
 </div>
